@@ -1,0 +1,188 @@
+/* CSS HomePage */
+#block-home-actualite {
+    margin-top:10px;
+}
+#block-home-actualite p.title_block {
+    margin-bottom:10px;
+}
+#module-phactu {
+    list-style-type: none;
+    padding:10px 0;
+}
+#liste-phactu p.title {
+    position:relative;
+    font-size:14px;
+    font-weight:bold;
+    border-bottom:2px solid #777;
+    padding-bottom:10px;
+}
+#liste-phactu p.title:hover {
+    border-bottom:2px solid #515151;
+}
+#liste-phactu p.title a {
+    color:#777;
+    padding-left:0;
+    width:75%;
+    
+    display:inline-block;
+}
+#liste-phactu p.title:hover a {
+    color:#515151;
+    text-decoration: none;
+}
+#liste-phactu p.title span.date {
+    position:absolute;
+    right:0;
+    font-size:12px;
+    font-weight:normal;
+}
+#liste-phactu a.link-detail {
+    float:right;
+    display:inline-block;
+    padding:2px 4px;
+    color:#777;
+}
+#liste-phactu a.link-detail:hover {
+    color:#515151;
+    text-decoration:none;
+}
+#liste-phactu li {
+    margin-bottom:10px;
+    list-style-type:none;
+}
+#liste-phactu li:not(.active) p.title {
+}
+#liste-phactu li .preview {
+    padding:10px 0 5px;
+}
+#liste-phactu li div.short_description {
+    padding:10px 0 5px;
+}
+#liste-phactu li.active div.short_description {
+}
+#liste-phactu .expand {
+    text-align: center;
+    cursor:pointer;
+    color:#777;
+    font-size:25px;
+    height:25px;
+    line-height:15px;
+    padding:0;
+    margin:0 0 9px;
+}
+#liste-phactu .expand:hover {
+    font-weight:bold;
+}
+#liste-phactu .expand:hover {
+    color:#515151;
+}
+/* / CSS HomePage */
+
+/* CSS ColumnBlock */
+#block-left-actualite p.title_block {
+    margin-bottom:10px;
+}
+#liste-left-phactu {
+    padding:5px 0;
+    position:relative;
+    overflow:hidden;
+}
+#liste-left-phactu li {
+    display:none;
+    position:absolute;
+    margin:0 0 10px;
+    padding:5px 0;
+    left:0;
+}
+#liste-left-phactu li.active {
+    display:block;
+    top:0;
+}
+#liste-left-phactu li p.title {
+    font-weight:bold;
+    padding:0;
+    margin:0 0 5px;
+}
+#liste-left-phactu li p.title span.date {
+    font-weight:normal;
+}
+#liste-left-phactu li div.short_description {
+    padding:10px 0;
+}
+#liste-left-phactu li a.link-detail {
+    
+}
+/* /ColumnBlock */
+
+/* CSS FrontTemplate */
+#block-phactu {}
+#block-phactu h1 {
+    margin-bottom:20px;
+    color:#3a3939;
+}
+#front-liste-phactu {
+    list-style-type: none;
+}
+#front-liste-phactu li.item {
+    padding:15px 0;
+}
+#front-liste-phactu li.item:first-child {
+    padding:0 0 15px 0;
+}
+#front-liste-phactu li.item p.title {
+    margin-bottom:10px;
+    padding-bottom: 10px;
+    position:relative;
+    font-size:14px;
+    font-weight:bold;
+    border-bottom:2px solid #777;
+}
+#front-liste-phactu li p.title a {
+    text-decoration:none;
+    display:inline;
+    color:#777;
+}
+#front-liste-phactu li.item p.title:hover {
+    border-bottom:2px solid #515151;
+}
+#front-liste-phactu li.item p.title:hover a {
+    color:#515151;
+}
+#front-liste-phactu li p.title span.date {
+    position:absolute;
+    right:8px;
+    font-size:12px;
+    top:0;
+    font-weight:normal;
+}
+#front-liste-phactu li a.link-detail {
+    float:right;
+    display:inline-block;
+    padding:4px 4px 2px;
+    color:#777;
+}
+#front-liste-phactu li a.link-detail:hover {
+    color:#515151;
+    text-decoration:none;
+}
+#block-phactu-detail h1 {
+    color:#3a3939;
+}
+#block-phactu-detail p.date {
+    margin:0;
+    padding:5px 0 10px 0;
+    font-size:13px;
+}
+#block-phactu-detail .rte {
+    padding:10px 0 20px;
+}
+#module-phactu-Actualites #center_column a.previous_page {
+    display:block;
+    padding:10px 0;
+    margin:10px 0;
+    font-weight:bold;
+}
+#module-phactu-Actualites #center_column {
+    padding-top:10px;
+}
+/* / CSS FrontTemplate */

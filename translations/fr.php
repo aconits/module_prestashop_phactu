@@ -1,0 +1,35 @@
+<?php
+
+global $_MODULE;
+$_MODULE = array();
+$_MODULE['<{phactu}prestashop>phactu_5625207c93e55ee3d3e4fa8d3a6a5320'] = 'Actualité';
+$_MODULE['<{phactu}prestashop>phactu_50e36764855e6d861c3e248e43104631'] = 'Ajouter un bloc actualité';
+$_MODULE['<{phactu}prestashop>phactu_b718adec73e04ce3ec720dd11a06a308'] = 'ID';
+$_MODULE['<{phactu}prestashop>phactu_99fb48ddce014d8ad24810eeb3bfde68'] = 'Titre';
+$_MODULE['<{phactu}prestashop>phactu_1df3e4291539e048539071445d1306d3'] = 'Date de création';
+$_MODULE['<{phactu}prestashop>phactu_c1f480d9d81b4787593ef89d02216786'] = 'Activé';
+$_MODULE['<{phactu}prestashop>phactu_dae8ace18bdcbcc6ae5aece263e14fe8'] = 'Configurations';
+$_MODULE['<{phactu}prestashop>phactu_ad9bd310b1a8cddb1d8dc65a6975d3c9'] = 'Nombre d\'actualités en page d\'accueil :';
+$_MODULE['<{phactu}prestashop>phactu_874d72a979ed0af23f8f500d6c5799f5'] = 'Nombre d\'actualités par page :';
+$_MODULE['<{phactu}prestashop>phactu_c9cc8cce247e49bae79f15173ce97354'] = 'Enregistrer';
+$_MODULE['<{phactu}prestashop>phactu_ea4788705e6873b424c65e91c2846b19'] = 'Annuler';
+$_MODULE['<{phactu}prestashop>phactu_ef61fb324d729c341ea8ab9901e23566'] = 'Ajouter';
+$_MODULE['<{phactu}prestashop>phactu_f4cd1e47aa138bd698ce8b0da16099b3'] = 'Liste de vos actualités';
+$_MODULE['<{phactu}prestashop>phactu_8af1f1c0895c6f9654aa578cfd0a3987'] = 'Modification';
+$_MODULE['<{phactu}prestashop>phactu_e49ab344781d649df3df50fa86ecaa0a'] = 'Ajout';
+$_MODULE['<{phactu}prestashop>phactu_883c079d84f1a20e4e78a82fb9a8ab19'] = 'Contenu de l\'actualité en page d\'accueil';
+$_MODULE['<{phactu}prestashop>phactu_670c689a0a64b13b1aa630dd3657944d'] = 'Contenu de l\'actualité en détail';
+$_MODULE['<{phactu}prestashop>phactu_93cba07454f06a4a960172bbd6e2a435'] = 'Oui';
+$_MODULE['<{phactu}prestashop>phactu_bafd7322c6e97d25b6299b5d6fe8920b'] = 'Non';
+$_MODULE['<{phactu}prestashop>front_actualite_d07c9d65da1d208cb63ead9604c180b4'] = 'Actualités';
+$_MODULE['<{phactu}prestashop>front_actualite_0a7b53ff3e279d48d2295eda6fc177c8'] = 'Retour aux actualités';
+$_MODULE['<{phactu}prestashop>front_actualite_b6e84fc0f794273c19e53ec9f0acdcd8'] = 'Vois plus...';
+$_MODULE['<{phactu}prestashop>front_actualite_1841b49d245c22693b250a86f3ceb28d'] = 'Voir le détail';
+$_MODULE['<{phactu}prestashop>front_actualite_292d37187f30bfe76e7fa34f249fd39d'] = 'Précédent';
+$_MODULE['<{phactu}prestashop>front_actualite_257a7b4c17035553819990bc73114989'] = 'Suivant';
+$_MODULE['<{phactu}prestashop>front_actualite_b5989b0e7445211d5d7773d15e21ac52'] = 'Aucune actualités disponibles pour le moment.';
+$_MODULE['<{phactu}prestashop>home_actualite_0a4b4f2b6a65dbbce01f9f56e9a87b95'] = 'Voir toutes les actualités';
+$_MODULE['<{phactu}prestashop>home_actualite_d07c9d65da1d208cb63ead9604c180b4'] = 'Actualités';
+$_MODULE['<{phactu}prestashop>home_actualite_b6e84fc0f794273c19e53ec9f0acdcd8'] = 'Vois plus...';
+$_MODULE['<{phactu}prestashop>home_actualite_1841b49d245c22693b250a86f3ceb28d'] = 'Voir le détail';
+$_MODULE['<{phactu}prestashop>home_actualite_b5989b0e7445211d5d7773d15e21ac52'] = 'Aucune actualités disponibles pour le moment.';
