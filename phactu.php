@@ -656,8 +656,9 @@ class PhActu extends Module
 		));
 
 		$this->context->controller->addCSS(($this->_path).'css/phactu.css', 'all');
-		$this->context->controller->addJS(($this->_path).'js/phactu.js');
-
+		//$this->context->controller->addJS(($this->_path).'js/phactu.js');
+		$this->context->controller->addJqueryUi('ui.accordion');
+		
 		return $this->display(($this->_path), 'home_actualite.tpl');
 	}
 
@@ -676,7 +677,6 @@ class PhActu extends Module
 		));
 
 		$this->context->controller->addCSS(($this->_path).'css/phactu.css', 'all');
-		//$this->context->controller->addJS(($this->_path).'js/phactu_column.js');
 		$this->context->controller->addJqueryPlugin('bxslider');
 
 		return $this->display(($this->_path), 'left_actualite.tpl');
