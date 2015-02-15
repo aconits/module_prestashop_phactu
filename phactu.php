@@ -98,7 +98,7 @@ class PhActu extends Module
 					),
 					'NB_COLUMN_PHACTU' => array(
 						'title' => $this->l('Bloc gauche et droit : '),
-						'desc' => $this->l('Définir le nombre d\actualites sur les colonnes gauche et droite.'),
+						'desc' => $this->l('Définir le nombre d\'actualites sur les colonnes gauche et droite.'),
 						'type' => 'text',
 						'cast' => 'intval',
 					),
@@ -110,13 +110,13 @@ class PhActu extends Module
 					),
 					'SPEED_PHACTU' => array(
 						'title' => $this->l('Bloc gauche et droit : '),
-						'desc' => $this->l('Définir le temps avant de passer à l\'actualité suivante (en milliseconds).'),
+						'desc' => $this->l('Définir le temps de transition (en milliseconds).'),
 						'type' => 'text',
 						'cast' => 'intval',
 					),
-					'EXECUTION_PHACTU' => array(
+					'PAUSE_PHACTU' => array(
 						'title' => $this->l('Bloc gauche et droit : '),
-						'desc' => $this->l('Définir le temps de transition (en milliseconds).'),
+						'desc' => $this->l('Définir le temps avant de passer à l\'actualité suivante (en milliseconds).'),
 						'type' => 'text',
 						'cast' => 'intval',
 					),
@@ -131,20 +131,20 @@ class PhActu extends Module
 					'name' => 'submitOptions',
 					'title' => $this->l('Save')
 				)
-			),
+			),a
 		);
 	}
 
 	public function install()
 	{
-		if (!parent::install() || !$this->registerHook('displayHome') || !$this->registerHook('displayLeftColumn') || !$this->installSQL() || !Configuration::updateValue('NB_HOME_PHACTU', 3) || !Configuration::updateValue('NB_PER_PAGE_PHACTU', 5) || !$this->_installJeuxDessai() || !$this->registerHook('ModuleRoutes') || !Configuration::updateValue('NB_CARAC_PHACTU', 250) || !Configuration::updateValue('NB_LEFT_CARAC_PHACTU', 150) || !Configuration::updateValue('NB_COLUMN_PHACTU', 3) || !Configuration::updateValue('SPEED_PHACTU', 7000) || !Configuration::updateValue('EXECUTION_PHACTU', 400)
+		if (!parent::install() || !$this->registerHook('displayHome') || !$this->registerHook('displayLeftColumn') || !$this->installSQL() || !Configuration::updateValue('NB_HOME_PHACTU', 3) || !Configuration::updateValue('NB_PER_PAGE_PHACTU', 5) || !$this->_installTestCases() || !$this->registerHook('ModuleRoutes') || !Configuration::updateValue('NB_CARAC_PHACTU', 250) || !Configuration::updateValue('NB_LEFT_CARAC_PHACTU', 150) || !Configuration::updateValue('NB_COLUMN_PHACTU', 3) || !Configuration::updateValue('SPEED_PHACTU', 800) || !Configuration::updateValue('PAUSE_PHACTU', 5000)
 				|| !Configuration::updateValue('COLOR_PHACTU', '#555454') || !Configuration::updateValue('COLOR_HV_PHACTU', '#333333') || !Configuration::updateValue('BG_COLOR_PHACTU', '#f6f6f6') || !Configuration::updateValue('BG_COLOR_HV_PHACTU', '#f6f6f6') || !Configuration::updateValue('BR_COLOR_PHACTU', '') || !Configuration::updateValue('BR_COLOR_HV_PHACTU'))
 			return false;
 
 		return true;
 	}
 
-	private function _installJeuxDessai()
+	private function _installTestCases()
 	{
 		$languages = Language::getLanguages();
 		$show_home = array(0, 1, 4, 6, 7, 8);
@@ -176,7 +176,7 @@ class PhActu extends Module
 
 	public function uninstall()
 	{
-		if (!parent::uninstall() || !$this->uninstallSQL() || !Configuration::deleteByName('NB_HOME_PHACTU') || !Configuration::deleteByName('NB_PER_PAGE_PHACTU') || !Configuration::deleteByName('NB_CARAC_PHACTU') || !Configuration::deleteByName('NB_LEFT_CARAC_PHACTU') || !Configuration::deleteByName('NB_COLUMN_PHACTU') || !Configuration::deleteByName('SPEED_PHACTU') || !Configuration::deleteByName('EXECUTION_PHACTU'))
+		if (!parent::uninstall() || !$this->uninstallSQL() || !Configuration::deleteByName('NB_HOME_PHACTU') || !Configuration::deleteByName('NB_PER_PAGE_PHACTU') || !Configuration::deleteByName('NB_CARAC_PHACTU') || !Configuration::deleteByName('NB_LEFT_CARAC_PHACTU') || !Configuration::deleteByName('NB_COLUMN_PHACTU') || !Configuration::deleteByName('SPEED_PHACTU') || !Configuration::deleteByName('PAUSE_PHACTU'))
 			return false;
 
 		return true;
@@ -250,7 +250,7 @@ class PhActu extends Module
 		return $this->_toolbar_btn;
 	}
 
-	protected function displayList()
+	private function _displayList()
 	{
 		$this->context->controller->addJqueryPlugin('colorpicker');
 		
@@ -302,7 +302,7 @@ class PhActu extends Module
 		);
 	}
 
-	protected function displayForm()
+	private function _displayForm()
 	{
 		if (Tools::isSubmit('updateactualite') && Tools::getValue('id_actualite'))
 		{
@@ -492,10 +492,10 @@ class PhActu extends Module
 			$this->clearCache();
 		}
 		elseif (Tools::isSubmit('addActualite') || Tools::isSubmit('updateactualite'))
-			return $this->displayForm();
+			return $this->_displayForm();
 		elseif (Tools::getIsset('deleteactualite'))
 		{
-			$this->deleteActualite();
+			$this->_deleteActualite();
 			$this->clearCache();
 		}
 		elseif (Tools::getIsset('statusactualite'))
@@ -519,7 +519,7 @@ class PhActu extends Module
 			$this->clearCache();
 		}
 
-		return $this->displayList();
+		return $this->_displayList();
 	}
 
 	public function addActualite()
@@ -547,7 +547,7 @@ class PhActu extends Module
 		return $actualite->save();
 	}
 
-	public function deleteActualite()
+	private function _deleteActualite()
 	{
 		$actualite = new Actualite((int)Tools::getValue('id_actualite'));
 		if (Validate::isLoadedObject($actualite))
@@ -616,7 +616,7 @@ class PhActu extends Module
 		$nb_actu_home_page = (int)Tools::getValue('NB_HOME_PHACTU', 3);
 		if ($nb_actu_home_page)
 			Configuration::updateValue('NB_HOME_PHACTU', $nb_actu_home_page);
-
+		
 		$nb_carac_home_page = (int)Tools::getValue('NB_CARAC_PHACTU');
 		Configuration::updateValue('NB_CARAC_PHACTU', $nb_carac_home_page);
 
@@ -630,8 +630,8 @@ class PhActu extends Module
 		$speed = (int)Tools::getValue('SPEED_PHACTU');
 		Configuration::updateValue('SPEED_PHACTU', $speed);
 
-		$execution = (int)Tools::getValue('EXECUTION_PHACTU');
-		Configuration::updateValue('EXECUTION_PHACTU', $execution);
+		$pause = (int)Tools::getValue('PAUSE_PHACTU');
+		Configuration::updateValue('PAUSE_PHACTU', $pause);
 
 		$nb_per_page = (int)Tools::getValue('NB_PER_PAGE_PHACTU', 5);
 		if ($nb_per_page)
@@ -671,12 +671,13 @@ class PhActu extends Module
 			'ph_style' => $ph_style,
 			'nb_carac' => (int)Configuration::get('NB_LEFT_CARAC_PHACTU'),
 			'phactu_speed' => (int)Configuration::get('SPEED_PHACTU'),
-			'phactu_execution' => (int)Configuration::get('EXECUTION_PHACTU'),
+			'phactu_pause' => (int)Configuration::get('PAUSE_PHACTU'),
 			'phactu_date_format' => $this->context->language->date_format_lite
 		));
 
 		$this->context->controller->addCSS(($this->_path).'css/phactu.css', 'all');
-		$this->context->controller->addJS(($this->_path).'js/phactu_column.js');
+		//$this->context->controller->addJS(($this->_path).'js/phactu_column.js');
+		$this->context->controller->addJqueryPlugin('bxslider');
 
 		return $this->display(($this->_path), 'left_actualite.tpl');
 	}

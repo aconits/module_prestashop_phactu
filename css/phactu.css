@@ -84,19 +84,10 @@
 }
 #liste-left-phactu {
     padding:5px 0;
-    position:relative;
-    overflow:hidden;
 }
 #liste-left-phactu li {
-    display:none;
-    position:absolute;
     margin:0 0 10px;
     padding:5px 0;
-    left:0;
-}
-#liste-left-phactu li.active {
-    display:block;
-    top:0;
 }
 #liste-left-phactu li p.title {
     font-weight:bold;

@@ -4,7 +4,7 @@
         <div id="module-left-phactu" class="block_content clearfix">
             <ul id="liste-left-phactu">
             {foreach from=$actualites item=actualite}
-                <li class="block clearfix{if $actualite@first} active{/if}">
+                <li>
                     <p class="title clearfix">
                         <a title="{l s='Voir plus...' mod='phactu'}" href="{$link->getModuleLink('phactu', 'actualites', ['actualite' => $actualite.id_actualite|intval])|escape:'htmlall':'UTF-8'}">
                             {$actualite.title|escape:'html':'UTF-8'}
@@ -19,10 +19,23 @@
             {/foreach}
             </ul>
         </div>
-        <script type="text/javascript">
-            phactu_speed = {$phactu_speed|intval};
-            phactu_execution_time = {$phactu_execution|intval};
-        </script>
+        {if $nb_actu > 1}
+	        <script type="text/javascript">
+    	        $("#liste-left-phactu").bxSlider({
+    				mode: "vertical",
+    				useCSS: false,
+    				auto: true,
+    				autoHover: true,
+    				speed: {$phactu_speed|intval},
+    				pause: {$phactu_pause|intval},
+    				slideSelector: "li",
+    				controls: false,
+    				pager: false,
+    				touchEnabled: true,
+    				adaptiveHeight: true
+    			});
+	        </script>
+        {/if}
     {else}            
         <p class='warning'>{l s='Aucune actualités disponibles pour le moment.' mod='phactu'}</p>
     {/if}
