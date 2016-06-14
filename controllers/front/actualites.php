@@ -37,7 +37,7 @@ class PhActuActualitesModuleFrontController extends ModuleFrontController
 	{
 		$nb_per_page = Configuration::get('NB_PER_PAGE_PHACTU');
 		$actualites = Actualite::getAllActive($this->context->language->id);
-
+		
 		$nb_actu = count($actualites);
 		if ($nb_actu > $nb_per_page)
 		{

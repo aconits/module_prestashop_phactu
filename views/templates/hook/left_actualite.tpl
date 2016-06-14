@@ -18,7 +18,7 @@
                 </li>
             {/foreach}
             </ul>
-        </div>
+        </div>        
         {if $nb_actu > 1}
 	        <script type="text/javascript">
     	        $("#liste-left-phactu").bxSlider({

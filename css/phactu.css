@@ -48,6 +48,9 @@
     margin-bottom:10px;
     list-style-type:none;
 }
+#liste-phactu li.titre_phactu {
+    margin-bottom:0;
+}
 #liste-phactu li:not(.active) p.title {
 }
 #liste-phactu li .preview {

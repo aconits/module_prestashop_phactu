@@ -131,14 +131,20 @@ class PhActu extends Module
 					'name' => 'submitOptions',
 					'title' => $this->l('Save')
 				)
-			),a
+			),
 		);
 	}
 
 	public function install()
 	{
-		if (!parent::install() || !$this->registerHook('displayHome') || !$this->registerHook('displayLeftColumn') || !$this->installSQL() || !Configuration::updateValue('NB_HOME_PHACTU', 3) || !Configuration::updateValue('NB_PER_PAGE_PHACTU', 5) || !$this->_installTestCases() || !$this->registerHook('ModuleRoutes') || !Configuration::updateValue('NB_CARAC_PHACTU', 250) || !Configuration::updateValue('NB_LEFT_CARAC_PHACTU', 150) || !Configuration::updateValue('NB_COLUMN_PHACTU', 3) || !Configuration::updateValue('SPEED_PHACTU', 800) || !Configuration::updateValue('PAUSE_PHACTU', 5000)
-				|| !Configuration::updateValue('COLOR_PHACTU', '#555454') || !Configuration::updateValue('COLOR_HV_PHACTU', '#333333') || !Configuration::updateValue('BG_COLOR_PHACTU', '#f6f6f6') || !Configuration::updateValue('BG_COLOR_HV_PHACTU', '#f6f6f6') || !Configuration::updateValue('BR_COLOR_PHACTU', '') || !Configuration::updateValue('BR_COLOR_HV_PHACTU'))
+		if (!parent::install() || !$this->registerHook('displayHome') || !$this->registerHook('displayLeftColumn') || !$this->registerHook('displayHeader')
+			|| !$this->installSQL() || !Configuration::updateValue('NB_HOME_PHACTU', 3) || !Configuration::updateValue('NB_PER_PAGE_PHACTU', 5)
+			|| !$this->_installTestCases() || !$this->registerHook('ModuleRoutes') || !Configuration::updateValue('NB_CARAC_PHACTU', 250)
+			|| !Configuration::updateValue('NB_LEFT_CARAC_PHACTU', 150) || !Configuration::updateValue('NB_COLUMN_PHACTU', 3)
+			|| !Configuration::updateValue('SPEED_PHACTU', 800) || !Configuration::updateValue('PAUSE_PHACTU', 5000)
+			|| !Configuration::updateValue('COLOR_PHACTU', '#555454') || !Configuration::updateValue('COLOR_HV_PHACTU', '#333333')
+			|| !Configuration::updateValue('BG_COLOR_PHACTU', '#f6f6f6') || !Configuration::updateValue('BG_COLOR_HV_PHACTU', '#f6f6f6')
+			|| !Configuration::updateValue('BR_COLOR_PHACTU', '') || !Configuration::updateValue('BR_COLOR_HV_PHACTU'))
 			return false;
 
 		return true;
@@ -613,6 +619,15 @@ class PhActu extends Module
 
 	public function updateConfiguration()
 	{
+		Configuration::updateValue('COLOR_PHACTU', Tools::getValue('COLOR_PHACTU'));
+		Configuration::updateValue('COLOR_HV_PHACTU', Tools::getValue('COLOR_HV_PHACTU'));
+		
+		Configuration::updateValue('BG_COLOR_PHACTU', Tools::getValue('BG_COLOR_PHACTU'));
+		Configuration::updateValue('BG_COLOR_HV_PHACTU', Tools::getValue('BG_COLOR_HV_PHACTU'));
+		
+		Configuration::updateValue('BR_COLOR_PHACTU', Tools::getValue('BR_COLOR_PHACTU'));
+		Configuration::updateValue('BR_COLOR_HV_PHACTU', Tools::getValue('BR_COLOR_HV_PHACTU'));
+		
 		$nb_actu_home_page = (int)Tools::getValue('NB_HOME_PHACTU', 3);
 		if ($nb_actu_home_page)
 			Configuration::updateValue('NB_HOME_PHACTU', $nb_actu_home_page);
@@ -643,14 +658,20 @@ class PhActu extends Module
 		return Configuration::getMultiple(array('COLOR_PHACTU', 'COLOR_HV_PHACTU', 'BG_COLOR_PHACTU', 'BG_COLOR_HV_PHACTU', 'BR_COLOR_PHACTU', 'BR_COLOR_HV_PHACTU'));
 	}
 	
-	public function hookDisplayHome()
+	public function hookDisplayHeader()
 	{
 		$ph_style = $this->getStyle();
+		$this->context->smarty->assign('ph_style', $ph_style);
+		
+		return $this->display(($this->_path), 'header_actualite.tpl');
+	}
+	
+	public function hookDisplayHome()
+	{
 		$actualites = Actualite::getHomeActualites((int)$this->context->language->id, (int)Configuration::get('NB_HOME_PHACTU'));
 		$this->context->smarty->assign(array(
 			'actualites' => $actualites,
 			'nb_actu' => count($actualites),
-			'ph_style' => $ph_style,
 			'nb_carac' => (int)Configuration::get('NB_CARAC_PHACTU'),
 			'phactu_date_format' => $this->context->language->date_format_lite
 		));
@@ -664,12 +685,10 @@ class PhActu extends Module
 
 	public function hookDisplayLeftColumn()
 	{
-		$ph_style = $this->getStyle();
 		$actualites = Actualite::getColumnActualites((int)$this->context->language->id, (int)Configuration::get('NB_COLUMN_PHACTU'));
 		$this->context->smarty->assign(array(
 			'actualites' => $actualites,
 			'nb_actu' => count($actualites),
-			'ph_style' => $ph_style,
 			'nb_carac' => (int)Configuration::get('NB_LEFT_CARAC_PHACTU'),
 			'phactu_speed' => (int)Configuration::get('SPEED_PHACTU'),
 			'phactu_pause' => (int)Configuration::get('PAUSE_PHACTU'),

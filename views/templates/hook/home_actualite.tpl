@@ -4,10 +4,9 @@
         <div id="module-phactu" class="block_content clearfix">
             <ul id="liste-phactu">
             {foreach from=$actualites item=actualite}
-                <li class="titre block clearfix">
+                <li class="titre block clearfix titre_phactu">
                     <p class="title clearfix">
                         {$actualite.title|escape:'html':'UTF-8'}
-                        
                         <span class="date">{$actualite.date_creation|date_format:$phactu_date_format}</span>
                     </p>
                     <div class="preview clearfix"{if $actualite@first} style="display:none;"{/if}>
@@ -21,12 +20,10 @@
                         <div class="rte">{$actualite.short_description}</div>
                         <a class="link-detail" title="{l s='Voir plus...' mod='phactu'}" href="{$link->getModuleLink('phactu', 'actualites', ['actualite' => $actualite.id_actualite|intval])|escape:'htmlall':'UTF-8'}">&raquo; {l s='Voir le détail' mod='phactu'}</a>
                     </div>
-
                 </li>
             {/foreach}
             </ul>
         </div>
-        
         {if $nb_actu > 1}
         	<script type="text/javascript">
 				$("#liste-phactu").accordion({

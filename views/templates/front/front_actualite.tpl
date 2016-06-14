@@ -6,6 +6,15 @@
             {/foreach}
     </p>
     <a class="previous_page" href="{$link->getModuleLink('phactu', 'actualites', ['page' => $page|intval])|escape:'htmlall':'UTF-8'}">&lt;&lt; {l s='Retour aux actualités' mod='phactu'}</a>
+{elseif isset($actualite) && $actualite}
+    {capture name=path}<a href="{$link->getModuleLink('phactu', 'actualites')|escape:'htmlall':'UTF-8'}">{l s='Actualités' mod='phactu'}</a><span class="navigation-pipe"></span><span class="navigation_page">{$actualite->title}</span>{/capture}
+    <div id="block-phactu-detail">
+            <h1>{$actualite->title|escape:'html':'UTF-8'}</h1>
+            <p class="date">{$actualite->date_creation|date_format:$phactu_date_format}</p>
+            <div class="rte">{$actualite->description}</div>
+            
+            <a class="previous_page" href="{$link->getModuleLink('phactu', 'actualites', ['page' => $page|intval])|escape:'htmlall':'UTF-8'}">&lt;&lt; {l s='Retour aux actualités' mod='phactu'}</a>
+    </div>
 {elseif isset($actualites) && $nbActu > 0}
     {capture name=path}{l s='Actualités' mod='phactu'}{/capture}
     <div id="block-phactu" class="clearfix">
@@ -52,15 +61,6 @@
                         </ul>
                 </div>
             {/if}
-    </div>
-{elseif isset($actualite) && $actualite}
-    {capture name=path}<a href="{$link->getModuleLink('phactu', 'actualites')|escape:'htmlall':'UTF-8'}">{l s='Actualités' mod='phactu'}</a><span class="navigation-pipe"></span><span class="navigation_page">{$actualite->title}</span>{/capture}
-    <div id="block-phactu-detail">
-            <h1>{$actualite->title|escape:'html':'UTF-8'}</h1>
-            <p class="date">{$actualite->date_creation|date_format:$phactu_date_format}</p>
-            <div class="rte">{$actualite->description}</div>
-            
-            <a class="previous_page" href="{$link->getModuleLink('phactu', 'actualites', ['page' => $page|intval])|escape:'htmlall':'UTF-8'}">&lt;&lt; {l s='Retour aux actualités' mod='phactu'}</a>
     </div>
 {else}
     {capture name=path}{l s='Actualités' mod='phactu'}{/capture}
